@@ -31,4 +31,4 @@ const styles = {
 };
 //Availability to other parts
 // export default Header;
-export { Header };
+export default Header ;

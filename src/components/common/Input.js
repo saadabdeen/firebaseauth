@@ -16,7 +16,7 @@ const Input = ({
       <TextInput
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
-        autoCorrect="false"
+        //autoCorrect="false"
         value={value}
         onChangeText={onChangeText}
         style={inputStyle}
