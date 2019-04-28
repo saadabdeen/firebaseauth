@@ -1,1 +1,2 @@
-# simple firebaseauth
+# simple firebaseauth + Redux Apply
+
