@@ -6,7 +6,8 @@ const Input = ({
   label,
   value,
   onChangeText,
-  secureTextEntry
+  secureTextEntry,
+  autoCorrect
 }) => {
   // Destructure the Sytles Object
   const { inputStyle, labelStyle, containerStyle } = styles;
@@ -16,7 +17,7 @@ const Input = ({
       <TextInput
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
-        //autoCorrect="false"
+        autoCorrect={autoCorrect}
         value={value}
         onChangeText={onChangeText}
         style={inputStyle}
