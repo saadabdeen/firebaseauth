@@ -60,7 +60,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Card>
+      <Card style={{ backgroundColor: 'powderblue'}}>
         {/* For User ID */}
         <CardSection>
           {/* When the text input is not treated as a custom component 
@@ -105,7 +105,7 @@ const styles = {
   errorTextStyle: {
     fontSize: 20,
     alignSelf: "center",
-    color: "red"
+    color: "red",
   }
 };
 export default LoginForm;

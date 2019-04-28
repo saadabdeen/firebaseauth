@@ -1,70 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { View } from "react-native";
-// import the firebase third party lib
-import firebase from "firebase";
-// Custom Components to be used in the app
-import {
-  Header,
-  CustomButton,
-  CardSection,
-  Card,
-  Spinner
-} from "./components/common";
-// Import our LoginForm component to be displayed on the screen
-import LoginForm from "./components/LoginForm";
+//Redux specific
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+//Get Reducers
+import reducers from "./reducer";
+//Get the Header Component
+import { Header } from "./components/common";
 
-class App extends Component {
-  state = { loggedIn: null };
-  // Life cycle method to init the firebase
-  componentWillMount() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyBqFo9u89f745DYE0WGzJ36B--UnC41Q20",
-      authDomain: "rnapp-auth.firebaseapp.com",
-      databaseURL: "https://rnapp-auth.firebaseio.com",
-      projectId: "rnapp-auth",
-      storageBucket: "rnapp-auth.appspot.com",
-      messagingSenderId: "586897341710"
-    });
-
-    //Handle the Application when it's logged in or logged out
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ loggedIn: true });
-      } else {
-        this.setState({ loggedIn: false });
-      }
-    });
-  }
-
-  renderContent() {
-    switch (this.state.loggedIn) {
-      case true:
-        return (
-          <Card>
-            <CardSection>
-              <CustomButton onPress={() => firebase.auth().signOut()}>
-                Logout
-              </CustomButton>
-            </CardSection>
-          </Card>
-        );
-      case false:
-        return <LoginForm />;
-      default:
-        return <Spinner size="large" />;
-    }
-  }
-  render() {
-    return (
+const App = () => {
+  return (
+    // Provider can only have one child component
+    <Provider store={createStore(reducers)}>
       <View>
-        <Header headerText="Authentication" />
-        {this.renderContent()}
-        {/* 
-        Before the renderContent Handling
-        <LoginForm /> */}
+        <Header headerText="Redux Demo -- Tech Stack" />
       </View>
-    );
-  }
-}
+    </Provider>
+  );
+};
 
 export default App;
